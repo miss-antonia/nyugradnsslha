@@ -2835,8 +2835,9 @@ footer h4.h05::after {
 /* footer main
  * --------------------------------- */
 .footer-main {
-  padding-top: 9.6rem;
+  padding-top: 3rem;
   padding-bottom: 3rem;
+  background-color: rgb(48, 37, 68);
 }
 .footer-main ul {
   font-size: 1.5rem;
