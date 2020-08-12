@@ -1781,6 +1781,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   background-color: #FFFFFF;
   min-height: 696px;
   text-align: center;
+  font-family: "montserrat-bold", sans-serif;
 }
 #about .about-wrap {
   max-width: 850px;
@@ -1806,7 +1807,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   margin: 0 auto 2.4rem;
 }
 #about .lead {
-  font-family: "librebaskerville-bold", serif;
+  font-family: "montserrat-bold", sans-serif;
   font-size: 4rem;
   line-height: 1.8;
   color: #2e383f;
@@ -1896,6 +1897,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   position: relative;
   padding: 15rem 0 15rem;
   color: rgba(255, 255, 255, 0.3);
+  font-family: "montserrat-bold", sans-serif;
 }
 #meetings .overlay {
   position: absolute;
