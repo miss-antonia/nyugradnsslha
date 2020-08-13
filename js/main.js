@@ -1,5 +1,5 @@
 /* ===================================================================
- * Infinity - Main JS
+ * Main JS
  *
  * ------------------------------------------------------------------- */ 
 
@@ -8,9 +8,10 @@
 	"use strict";
 
 	var cfg = {		
-		defAnimation   : "fadeInUp",    // default css animation		
-		scrollDuration : 800,           // smoothscroll duration
-		mailChimpURL   : 'http://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e65110b38d'
+		upAnimation   : "fadeInUp",
+		leftAnimation   : "fadeInLeftBig",
+		rightAnimation   : "fadeInRightBig",	
+		scrollDuration : 800          // smoothscroll duration
 	},	
 
 	$WIN = $(window);
@@ -232,19 +233,95 @@
 
   /* Animations
 	* ------------------------------------------------------- */
-	var ssAnimations = function() {
+	var ssUpAnimations = function() {
 
 		if (!$("html").hasClass('no-cssanimations')) {
 			$('.animate-this').waypoint({
 				handler: function(direction) {
 
-					var defAnimationEfx = cfg.defAnimation;
+					var defAnimationEfx = cfg.upAnimation;
 
 					if ( direction === 'down' && !$(this.element).hasClass('animated')) {
 						$(this.element).addClass('item-animate');
 
 						setTimeout(function() {
 							$('body .animate-this.item-animate').each(function(ctr) {
+								var el       = $(this),
+								animationEfx = el.data('animate') || null;	
+
+	                  	if (!animationEfx) {
+			                 	animationEfx = defAnimationEfx;	                 	
+			               }
+
+			              	setTimeout( function () {
+									el.addClass(animationEfx + ' animated');
+									el.removeClass('item-animate');
+								}, ctr * 30);
+
+							});								
+						}, 100);
+					}
+
+					// trigger once only
+	       		this.destroy(); 
+				}, 
+				offset: '95%'
+			}); 
+		}
+
+	};
+
+	var ssLeftAnimations = function() {
+
+		if (!$("html").hasClass('no-cssanimations')) {
+			$('.animate-this-left').waypoint({
+				handler: function(direction) {
+
+					var defAnimationEfx = cfg.leftAnimation;
+
+					if ( direction === 'down' && !$(this.element).hasClass('animated')) {
+						$(this.element).addClass('item-animate');
+
+						setTimeout(function() {
+							$('body .animate-this-left.item-animate').each(function(ctr) {
+								var el       = $(this),
+								animationEfx = el.data('animate') || null;	
+
+	                  	if (!animationEfx) {
+			                 	animationEfx = defAnimationEfx;	                 	
+			               }
+
+			              	setTimeout( function () {
+									el.addClass(animationEfx + ' animated');
+									el.removeClass('item-animate');
+								}, ctr * 30);
+
+							});								
+						}, 100);
+					}
+
+					// trigger once only
+	       		this.destroy(); 
+				}, 
+				offset: '95%'
+			}); 
+		}
+
+	};
+
+	var ssRightAnimations = function() {
+
+		if (!$("html").hasClass('no-cssanimations')) {
+			$('.animate-this-right').waypoint({
+				handler: function(direction) {
+
+					var defAnimationEfx = cfg.rightAnimation;
+
+					if ( direction === 'down' && !$(this.element).hasClass('animated')) {
+						$(this.element).addClass('item-animate');
+
+						setTimeout(function() {
+							$('body .animate-this-right.item-animate').each(function(ctr) {
 								var el       = $(this),
 								animationEfx = el.data('animate') || null;	
 
@@ -284,7 +361,7 @@
 	                   animationEfx = el.data('animate') || null;		                                      
 
 	               if (!animationEfx) {
-	                 	animationEfx = cfg.defAnimation;	                 	
+	                 	animationEfx = cfg.upAnimation;	                 	
 	               }
 
 	              	setTimeout( function () {
@@ -344,37 +421,6 @@
    };	
 
 
-  /* AjaxChimp
-	* ------------------------------------------------------ */
-	var ssAjaxChimp = function() {
-
-		$('#mc-form').ajaxChimp({
-			language: 'es',
-		   url: cfg.mailChimpURL
-		});
-
-		// Mailchimp translation
-		//
-		//  Defaults:
-		//	 'submit': 'Submitting...',
-		//  0: 'We have sent you a confirmation email',
-		//  1: 'Please enter a value',
-		//  2: 'An email address must contain a single @',
-		//  3: 'The domain portion of the email address is invalid (the portion after the @: )',
-		//  4: 'The username portion of the email address is invalid (the portion before the @: )',
-		//  5: 'This email address looks fake or invalid. Please enter a real email address'
-
-		$.ajaxChimp.translations.es = {
-		  'submit': 'Submitting...',
-		  0: '<i class="fa fa-check"></i> We have sent you a confirmation email',
-		  1: '<i class="fa fa-warning"></i> You must enter a valid e-mail address.',
-		  2: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-		  3: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-		  4: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-		  5: '<i class="fa fa-warning"></i> E-mail address is not valid.'
-		} 
-
-	};
 
  
   /* Back to Top
@@ -414,10 +460,11 @@
 		ssSmoothScroll();
 		ssPlaceholder();
 		ssAlertBoxes();
-		ssAnimations();
+		ssUpAnimations();
+		ssLeftAnimations();
+		ssRightAnimations();
 		ssIntroAnimation();		
 		ssContactForm();
-		ssAjaxChimp();
 		ssBackToTop();
 
 	})();
