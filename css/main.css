@@ -1513,9 +1513,9 @@
    background-position: center center;
    background-repeat: no-repeat;
    background-attachment: fixed;
-   -webkit-background-size: fixed;
-   -moz-background-size: fixed;
-   background-size: fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   background-size: cover;
    min-height: 804px;
    position: relative;
  }
