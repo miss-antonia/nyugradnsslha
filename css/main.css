@@ -1512,7 +1512,7 @@
    background-image: url(../images/flag.jpg);
    background-position: center center;
    background-repeat: no-repeat;
-   background-attachment: fixed;
+   /* background-attachment: fixed; */
    -webkit-background-size: cover;
    -moz-background-size: cover;
    background-size: cover;
@@ -1525,8 +1525,8 @@
    left: 0;
    width: 100%;
    height: 100%;
-   opacity: .2;
-   background-color: #19191b;
+   opacity: .9;
+   background-color: #ffffff00;
  }
  
  .home-content-table {
